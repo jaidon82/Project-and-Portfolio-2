@@ -10,12 +10,15 @@ public class GameManager : MonoBehaviour
     public playerController playerScript;
 
     [SerializeField] GameObject menuPause;
+    [SerializeField] GameObject menuActive;
     public bool isPaused;
+    float timescaleOrig;
     void Awake()
     {
         Instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+        timescaleOrig = Time.timeScale;
     }
 
     // Update is called once per frame
@@ -23,8 +26,10 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
+            statePaused();
+            menuActive = menuPause;
 
-            menuPause.SetActive(isPaused);
+            menuActive.SetActive(isPaused);
         }
 
 
@@ -41,9 +46,11 @@ public class GameManager : MonoBehaviour
     public void stateUnpaused()
     {
         isPaused = !isPaused;
-        Time.timeScale = 1.0f;
+        Time.timeScale = timescaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        menuActive.SetActive(false);
+        
     }
 
 
