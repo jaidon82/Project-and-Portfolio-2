@@ -319,6 +319,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &138397105 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2380199222151225225, guid: f54094540d0d6a540ab6f621b12b1182, type: 3}
+  m_PrefabInstance: {fileID: 7998557179767591096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &163064733
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +758,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974539846}
   m_CullTransparentMesh: 1
+--- !u!1 &1058084596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3287429600774265715, guid: f54094540d0d6a540ab6f621b12b1182, type: 3}
+  m_PrefabInstance: {fileID: 7998557179767591096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &1058084597
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058084596}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1593442170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1136,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScript: {fileID: 0}
   menuPause: {fileID: 0}
+  menuActive: {fileID: 0}
   isPaused: 0
 --- !u!1001 &2510670782863935609
 PrefabInstance:
@@ -1195,7 +1228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000744015960992096, guid: f54094540d0d6a540ab6f621b12b1182, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2276
+      value: 5.86
       objectReference: {fileID: 0}
     - target: {fileID: 2000744015960992096, guid: f54094540d0d6a540ab6f621b12b1182, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1229,5 +1262,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3721144997731497506, guid: f54094540d0d6a540ab6f621b12b1182, type: 3}
+      propertyPath: HP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721144997731497506, guid: f54094540d0d6a540ab6f621b12b1182, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1058084597}
+    - target: {fileID: 3721144997731497506, guid: f54094540d0d6a540ab6f621b12b1182, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721144997731497506, guid: f54094540d0d6a540ab6f621b12b1182, type: 3}
+      propertyPath: shootPos
+      value: 
+      objectReference: {fileID: 138397105}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f54094540d0d6a540ab6f621b12b1182, type: 3}
