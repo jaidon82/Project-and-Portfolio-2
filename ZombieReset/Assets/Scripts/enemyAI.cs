@@ -18,14 +18,13 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.Instance.updateGameGoal(1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, GameManager.Instance.player.transform.position, speed * Time.deltaTime);
-        agent.SetDestination(GameManager.Instance.player.transform.position);
+        
 
         
          
@@ -39,6 +38,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if(HP <= 0)
         {
+            GameManager.Instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }

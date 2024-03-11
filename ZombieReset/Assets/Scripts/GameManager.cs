@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuActive;
+    [SerializeField] GameObject menuWin;
     public bool isPaused;
     float timescaleOrig;
+    public int gameGoal;
     void Awake()
     {
         Instance = this;
@@ -53,7 +55,17 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void updateGameGoal(int num)
+    {
+        gameGoal += num;
+        if (gameGoal <= 0)
+        {
+            statePaused();
+            menuActive = menuWin;
+            menuActive.SetActive(true);
 
+        }
+    }
 
 
 }
