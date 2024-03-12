@@ -24,8 +24,8 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        
 
+        transform.position = Vector3.MoveTowards(transform.position,GameManager.Instance.player.transform.position, Time.deltaTime *speed);
         
          
         
