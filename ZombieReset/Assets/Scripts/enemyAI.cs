@@ -25,7 +25,7 @@ public class enemyAI : MonoBehaviour, IDamage
     void Update()
     {
 
-        transform.position = Vector3.MoveTowards(transform.position,GameManager.Instance.player.transform.position, Time.deltaTime *speed);
+        agent.SetDestination(GameManager.Instance.player.transform.position);
         
          
         
