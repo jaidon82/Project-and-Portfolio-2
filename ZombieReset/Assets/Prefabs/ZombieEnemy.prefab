@@ -1341,6 +1341,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3215290a9455b194bb8251005dc98705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 5
+  speed: 3
+  viewCone: 90
+  roamDist: 15
+  roamPauseTime: 3
+  shootRate: 0.6
+  model: {fileID: 0}
+  agent: {fileID: 0}
+  bullet: {fileID: 0}
+  shootPos: {fileID: 0}
+  headPos: {fileID: 0}
 --- !u!1 &3432671449055450721
 GameObject:
   m_ObjectHideFlags: 0

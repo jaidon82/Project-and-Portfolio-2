@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, IDamage
 {
 
     [Header("----- Components -----")]
     [SerializeField] CharacterController controller;
     [Header("----- Player Stats -----")]
     [SerializeField] int speed;
+    [SerializeField] int HP;
     [SerializeField] int jumpMax;
     [SerializeField] int jumpSpeed;
     [SerializeField] int gravity;
 
     int jumpCount;
+    int HPOrig;
+
     Vector3 moveDir;
     Vector3 playerVel;
 
@@ -65,7 +68,14 @@ public class playerController : MonoBehaviour
             playerVel = Vector3.zero;
         }
 
-
+        if(Input.GetButtonDown("Crouch"))
+        {
+            crouch();
+        }
+        else if(Input.GetButtonUp("Crouch"))
+        {
+            unCrouch();
+        }
     }
 
 
@@ -90,5 +100,26 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(shootRate);
         isShooting=false;
     }
-
+    void updateplayerHP()
+    {
+        GameManager.Instance.HPBar.fillAmount = (float)HP / HPOrig;
+    }
+    public void takeDamage(int amount)
+    {
+        HP -= amount; 
+        updateplayerHP();
+        if(HP<=0)
+        {
+            GameManager.Instance.stateLose();
+        }
+        
+    }
+    void crouch()
+    {
+        controller.height /= 2;
+    }
+    void unCrouch()
+    {
+        controller.height *= 2;
+    }
 }

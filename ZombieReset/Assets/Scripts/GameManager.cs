@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -12,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuWin;
+    [SerializeField] GameObject menuLose;
+    [SerializeField] public Image HPBar;
+    [SerializeField] TMP_Text enemycount;
     public bool isPaused;
     float timescaleOrig;
     public int gameGoal;
@@ -58,14 +63,25 @@ public class GameManager : MonoBehaviour
     public void updateGameGoal(int num)
     {
         gameGoal += num;
+        enemycount.text=gameGoal.ToString();
         if (gameGoal <= 0)
         {
-            statePaused();
-            menuActive = menuWin;
-            menuActive.SetActive(true);
+            stateWin();
 
         }
     }
+    public void stateLose()
+    {
+        statePaused();
+        menuActive = menuLose;
+        menuActive.SetActive(isPaused);
 
+    }
+    public void stateWin()
+    {
+        statePaused();
+        menuActive = menuWin;
+        menuActive.SetActive(isPaused);
+    }
 
 }
