@@ -358,6 +358,7 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/IDamage.cs"
 "Assets/Scripts/playerController.cs"
+"Assets/Scripts/spawner.cs"
 -langversion:9.0
 
 /deterministic
