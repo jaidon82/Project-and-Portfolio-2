@@ -10,9 +10,11 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int viewCone;
     [SerializeField] int roamDist;
     [SerializeField] int roamPauseTime;
+    [SerializeField] int animSpeedTrans;
     [SerializeField] float shootRate;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Animator anim;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
@@ -34,6 +36,8 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+        float animSpeed = agent.velocity.normalized.magnitude;
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans)); //activates the blend tree
 
         if (playerInRange && !canSeePlayer())
         {
@@ -52,6 +56,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
       HP -= amount;
         StartCoroutine(flashRed());
+        anim.SetTrigger("Damage");
 
         if(HP <= 0)
         {
@@ -65,9 +70,15 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting= true;
-        Instantiate(bullet, shootPos.transform.position, transform.rotation);
+        anim.SetTrigger("Shoot");
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    public void createBullet()
+    {
+        Instantiate(bullet, shootPos.transform.position, transform.rotation);
+
     }
 
     IEnumerator flashRed()

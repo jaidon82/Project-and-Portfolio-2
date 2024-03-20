@@ -356,6 +356,8 @@
 "Assets/Scripts/cameraController.cs"
 "Assets/Scripts/enemyAI.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/gunPickUp.cs"
+"Assets/Scripts/gunStats.cs"
 "Assets/Scripts/IDamage.cs"
 "Assets/Scripts/playerController.cs"
 "Assets/Scripts/spawner.cs"
