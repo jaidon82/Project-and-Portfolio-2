@@ -138,6 +138,7 @@ public class playerController : MonoBehaviour, IDamage
         shootDist = gun.shootDist;
         gunModel.GetComponent<MeshFilter>().sharedMesh=gun.model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
+        selectedGun = gunList.Count - 1;
     }
 
 
