@@ -18,6 +18,6 @@ MonoBehaviour:
   ammoCur: 0
   ammoMax: 8
   model: {fileID: 5571641588984482722, guid: c303a18f1cbdd4156b139b9e5b35d6a9, type: 3}
-  hitEffect: {fileID: 4369440989968847191, guid: 229441efaa76e0a479aa2cf6ca6e6486, type: 3}
+  bullet: {fileID: 7722331336066664419, guid: 7120469c7c6bf0544a3629d5e18ad4e6, type: 3}
   shootSound: {fileID: 0}
   shootSoundVol: 0

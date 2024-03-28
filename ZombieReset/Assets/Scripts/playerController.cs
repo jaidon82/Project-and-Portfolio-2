@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
@@ -20,6 +21,10 @@ public class playerController : MonoBehaviour, IDamage
     int selectedGun;
     Vector3 moveDir;
     Vector3 playerVel;
+
+    [SerializeField] Animator animator;
+    [SerializeField] int animSpeedTrans;
+
 
     [Header("------ Gun Stats -----")]
     [SerializeField] List<gunStats> gunList= new List<gunStats>();
@@ -55,7 +60,7 @@ public class playerController : MonoBehaviour, IDamage
     {
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
            controller.Move(moveDir* speed * Time.deltaTime);
-
+       
         if(Input.GetButtonDown("Jump") && jumpCount<jumpMax)
         {
             jumpCount++;
@@ -88,25 +93,13 @@ public class playerController : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
-
-        RaycastHit hit;
-        if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f,0.5f)), out hit, shootDist))
-        {
-            Debug.Log(hit.collider.name);
-            Instantiate(gunList[selectedGun].hitEffect, hit.point, gunList[selectedGun].hitEffect.transform.rotation); //display hit effect
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
-
-            if(dmg != null) 
-            {
-                dmg.takeDamage(shootDamage);
-
-            }
-
-        }
-
+        Vector3 shootPos = gunModel.transform.forward;     
+        Instantiate(gunList[selectedGun].bullet, gunModel.transform.position, Quaternion.LookRotation(shootPos));
         yield return new WaitForSeconds(shootRate);
         isShooting=false;
     }
+
+
     void updateplayerHP()
     {
         GameManager.Instance.HPBar.fillAmount = (float)HP / HPOrig;
